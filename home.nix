@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgsStable, ... }:
 
 let
   link = config.lib.file.mkOutOfStoreSymlink;
@@ -22,12 +22,18 @@ in
   # environment.
 
   nixpkgs.config.allowUnfree = true;
-  
+
   nix = {
-    package = pkgs.nix;
+    # package = pkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
+    # Garbage Colector
+    gc = {
+      automatic = true;
+      frequency = "monthly";
+    };
   };
-  
+
+
   #Enable/Config programs
   programs = {
     git = {
@@ -35,8 +41,8 @@ in
       userName = "ravicorreia";
       userEmail = "ravicorreia@proton.me";
       signing = {
-         #key = "sua-chave-gpg";
-         format = "ssh";
+        # singByDefault = true;
+        format = "ssh";
       };
 
         # Outras configurações do Git aqui
@@ -53,7 +59,6 @@ in
     brave               # Browser
     discord             # All-in-one cross-platform voice and text chat
     vscode              # Text editor
-    stremio             # Modern media center that gives you the freedom to watch everything you want
     spotify             # Music Stream
 
       # dev pkgs
@@ -87,6 +92,8 @@ in
   ] ++ (with pkgsStable; [
     # Here i can add some packages from stable branch e.g.
     # ghostty             # Terminal; STABLE VERSION
+    stremio             # Modern media center that gives you the freedom to watch everything you want
+    obs-studio          # Free and open source software for video recording and live streaming
   ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
