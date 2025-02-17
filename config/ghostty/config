@@ -1,0 +1,13 @@
+theme = SeaShells
+font-family = "JetBrainsMono Nerd Font"
+#window-decoration = false
+background-opacity = 0.80
+window-padding-x = 5
+window-padding-y = 5
+#window-padding-balance = true
+window-height = 42
+window-width = 148
+gtk-titlebar = false
+#gtk-adwaita = false
+
+
