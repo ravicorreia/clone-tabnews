@@ -74,7 +74,7 @@ bindkey -M viins 'jj' vi-cmd-mode
 
 alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
 alias nv='nvim'
-alias clr='clear'
+alias cl='clear'
 alias lg='lazygit'
 alias q='exit'
 alias nix-shell='nix-shell --command "exec zsh"'

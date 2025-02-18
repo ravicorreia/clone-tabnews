@@ -15,24 +15,20 @@ in
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  # home.activation = {
-  # };
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-
-  nixpkgs.config.allowUnfree = true;
-
   nix = {
-    # package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    package = pkgs.nix;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+    };
     # Garbage Colector
     gc = {
       automatic = true;
       frequency = "monthly";
     };
+    # extraOptions = ''
+    #   allowUnfree = true;
+    # '';
   };
-
 
   #Enable/Config programs
   programs = {
@@ -41,7 +37,8 @@ in
       userName = "ravicorreia";
       userEmail = "ravicorreia@proton.me";
       signing = {
-        # singByDefault = true;
+        key = null;
+        signByDefault = false;
         format = "ssh";
       };
 
@@ -52,11 +49,14 @@ in
     };
   };
 
+# The home.packages option allows you to install unfree Nix packages into your environment.
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
 
       # basic pkgs
     vlc
     brave               # Browser
+    google-chrome       # Browser
     discord             # All-in-one cross-platform voice and text chat
     vscode              # Text editor
     spotify             # Music Stream
