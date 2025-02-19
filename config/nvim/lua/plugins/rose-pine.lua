@@ -1,7 +1,7 @@
 return {
   "rose-pine/neovim",
   name = "rose-pine",
-  -- enabled = false,
+  enabled = false,
   config = function()
     local rose_pine = require("rose-pine")
     rose_pine.setup({
@@ -79,7 +79,7 @@ return {
       end,
     })
 
-    vim.cmd("colorscheme rose-pine")
+    -- vim.cmd("colorscheme rose-pine")
     -- vim.cmd("colorscheme rose-pine-main")
     -- vim.cmd("colorscheme rose-pine-moon")
     -- vim.cmd("colorscheme rose-pine-dawn")

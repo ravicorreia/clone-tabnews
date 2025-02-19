@@ -102,6 +102,7 @@ in
     ripgrep             # Utility that combines the usability of The Silver Searcher with the raw speed of grep
     fd                  # Simple, fast and user-friendly alternative to find
     cargo               # Rust's package manager and build system, it handles dependencies e.g. nil_ls for nix.
+    nodejs              # Event-driven I/O framework for the V8 JavaScript engine
     # ghostty             # Terminal
     # tmux                # Terminal Multiplexer
 

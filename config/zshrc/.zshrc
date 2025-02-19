@@ -84,3 +84,4 @@ alias dot-update='home-manager switch --flake ~/dotfiles/#ravicorreia --impure'
 alias home-flake-up='echo "Atualizando o flake do Home Manager" && nix flake update ~/dotfiles'
 
 alias l='ls -a'
+alias ~='cd ~'

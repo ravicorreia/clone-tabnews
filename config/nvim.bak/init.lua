@@ -7,7 +7,7 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 
 vim.opt.fillchars = {
-  eob = " ", -- Substitui o `~` por um espaço em branco
+	eob = " ", -- Substitui o `~` por um espaço em branco
 }
 
 vim.opt.mouse = "a"
@@ -38,11 +38,11 @@ vim.opt.clipboard = "unnamedplus"
 -- Hightligh when yanking (copying) text Try it with 'yap' in normal mode
 -- See ':help vim.highlight.on_yank()'
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- Keybinds
@@ -57,9 +57,9 @@ vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
 vim.keymap.set("n", ";st", function()
-  vim.cmd("bel vnew")
-  vim.cmd.term()
-  vim.api.nvim_win_set_width(0, 42)
+	vim.cmd("bel vnew")
+	vim.cmd.term()
+	vim.api.nvim_win_set_width(0, 42)
 end)
 
 vim.keymap.set("n", "grn", vim.lsp.buf.rename)
@@ -87,7 +87,7 @@ require("notify")("Hello Ravi! Happy Coding!")
 
 -- Define the function
 MyCoolFunction = function()
-  print("Hello Ravi, Welcome to Advent of Neovim")
+	print("Hello Ravi, Welcome to Advent of Neovim")
 end
 
 -- Call the function
