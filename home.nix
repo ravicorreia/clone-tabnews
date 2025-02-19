@@ -15,6 +15,28 @@ in
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    name = "Banana";
+    package = pkgs.banana-cursor;
+    x11 = {
+      enable = true;
+      defaultCursor = "Banana";
+    };
+  };
+  gtk = {
+    enable = true;
+    iconTheme = {
+        package = pkgs.whitesur-icon-theme;
+        name = "WhiteSur-dark";
+      };
+    cursorTheme = {
+      package = pkgs.banana-cursor;
+      name = "Banana";
+      size = 32;
+    };
+   };
+
   nix = {
     package = pkgs.nix;
     settings = {
@@ -60,6 +82,9 @@ in
     discord             # All-in-one cross-platform voice and text chat
     vscode              # Text editor
     spotify             # Music Stream
+    stremio             # Modern media center that gives you the freedom to watch everything you want
+    obs-studio          # Free and open source software for video recording and live streaming
+    timeshift           # System restore tool for Linux
 
       # dev pkgs
     lazygit
@@ -92,8 +117,6 @@ in
   ] ++ (with pkgsStable; [
     # Here i can add some packages from stable branch e.g.
     # ghostty             # Terminal; STABLE VERSION
-    stremio             # Modern media center that gives you the freedom to watch everything you want
-    obs-studio          # Free and open source software for video recording and live streaming
   ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
