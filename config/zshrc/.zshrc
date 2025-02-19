@@ -63,6 +63,7 @@ setopt hist_find_no_dups
   # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
     # Keybindigns
 bindkey '^p' history-search-backward
@@ -82,3 +83,4 @@ alias nix-shell='nix-shell --command "exec zsh"'
 alias dot-update='home-manager switch --flake ~/dotfiles/#ravicorreia --impure'
 alias home-flake-up='echo "Atualizando o flake do Home Manager" && nix flake update ~/dotfiles'
 
+alias l='ls -a'
