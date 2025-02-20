@@ -71,22 +71,22 @@ in
     };
   };
 
-# The home.packages option allows you to install unfree Nix packages into your environment.
+  # The home.packages option allows you to install unfree Nix packages into your environment.
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
 
-      # basic pkgs
+    # basic pkgs
     vlc
     brave               # Browser
-    google-chrome       # Browser
+    # google-chrome       # Browser
     discord             # All-in-one cross-platform voice and text chat
     vscode              # Text editor
     spotify             # Music Stream
-    stremio             # Modern media center that gives you the freedom to watch everything you want
-    obs-studio          # Free and open source software for video recording and live streaming
+    # stremio             # Modern media center that gives you the freedom to watch everything you want
+    # obs-studio          # Free and open source software for video recording and live streaming
     timeshift           # System restore tool for Linux
 
-      # dev pkgs
+    # dev pkgs
     lazygit
     direnv              # Shell extension that manages your environment
     nix-direnv          # Fast, persistent use_nix implementation for direnv
@@ -106,7 +106,7 @@ in
     # ghostty             # Terminal
     # tmux                # Terminal Multiplexer
 
-      # fonts
+    # fonts
     nerd-fonts.jetbrains-mono 
 
     #clang               # Compilor
