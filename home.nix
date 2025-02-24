@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsStable, ... }:
+{ config, pkgs, pkgsStable, lib, ... }:
 
 let
   link = config.lib.file.mkOutOfStoreSymlink;
@@ -76,13 +76,14 @@ in
   home.packages = with pkgs; [
 
     # basic pkgs
+    stow
     vlc
     brave               # Browser
     # google-chrome       # Browser
     discord             # All-in-one cross-platform voice and text chat
     vscode              # Text editor
-    spotify             # Music Stream
-    # stremio             # Modern media center that gives you the freedom to watch everything you want
+    spotify             # Music Stream; O dnf não possui um pacote para o spotify
+    # stremio             # Modern media center that gives you the freedom to watch everything you want; O dnf não possui um pacote
     # obs-studio          # Free and open source software for video recording and live streaming
     timeshift           # System restore tool for Linux
 
@@ -127,10 +128,10 @@ in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
 
-  ".zshrc".source = link ~/dotfiles/config/zshrc/.zshrc;
-  ".p10k.zsh".source = link ~/dotfiles/config/zshrc/.p10k.zsh;
-  ".config/nvim".source = link ~/dotfiles/config/nvim;
-  ".config/ghostty".source = link ~/dotfiles/config/ghostty;
+  #".zshrc".source = link ~/dotfiles/config/zshrc/.zshrc;
+  #".p10k.zsh".source = link ~/dotfiles/config/zshrc/.p10k.zsh;
+  #".config/nvim".source = link ~/dotfiles/config/nvim;
+  #".config/ghostty".source = link ~/dotfiles/config/ghostty;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -161,6 +162,14 @@ in
     EDITOR = "nvim";
     SHELL = "/bin/zsh";
     NIX_BUILD_SHELL = "/bin/zsh";
+  };
+  
+  home.activation = {
+    dotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      # Usa nix-shell para fornecer o stow
+      $VERBOSE_ARG echo "Stowing dotfiles..."
+      $VERBOSE_ARG nix-shell -p stow --run "stow -d $HOME/dotfiles/dot -t $HOME ."
+    '';
   };
 
   # Let Home Manager install and manage itself.
