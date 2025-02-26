@@ -76,15 +76,14 @@ in
   home.packages = with pkgs; [
 
     # basic pkgs
-    stow
     vlc
     brave               # Browser
-    # google-chrome       # Browser
     discord             # All-in-one cross-platform voice and text chat
     vscode              # Text editor
     spotify             # Music Stream; O dnf não possui um pacote para o spotify
     # stremio             # Modern media center that gives you the freedom to watch everything you want; O dnf não possui um pacote
     # obs-studio          # Free and open source software for video recording and live streaming
+    obsidian
     timeshift           # System restore tool for Linux
 
     # dev pkgs
@@ -108,7 +107,7 @@ in
     # tmux                # Terminal Multiplexer
 
     # fonts
-    nerd-fonts.jetbrains-mono 
+    nerd-fonts.jetbrains-mono
 
     #clang               # Compilor
     #gnumake             # Compilor
