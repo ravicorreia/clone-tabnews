@@ -1,7 +1,4 @@
 # Nix + Direnv
-flake.nix
-flake.lock
-.envrc
 .direnv/
 
 # Logs
