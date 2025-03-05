@@ -1,8 +1,0 @@
-\.git
-home\.nix
-flake\.nix
-flake\.lock
-nvim\.bak
-README.*
-LICENSE.*
-\.stow-local-ignore

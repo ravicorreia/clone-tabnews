@@ -23,7 +23,7 @@ return {
         styles = {
           bold = true,
           italic = true,
-          transparency = false,
+          transparency = true,
         },
 
         groups = {
@@ -136,6 +136,7 @@ return {
   },
   {
     "sainnhe/gruvbox-material",
+    -- enable = false,
     priority = 1000,
     event = "VeryLazy",
     config = function()

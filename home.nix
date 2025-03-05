@@ -87,7 +87,8 @@ in
     timeshift           # System restore tool for Linux
 
     # dev pkgs
-    lazygit
+    eza                 # A modern alternative for the venerable file-listing command-line program ls
+    lazygit             # Simple terminal UI for git commands
     direnv              # Shell extension that manages your environment
     nix-direnv          # Fast, persistent use_nix implementation for direnv
     zoxide              # Fast cd command that learns your habits

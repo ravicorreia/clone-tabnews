@@ -1,5 +1,5 @@
 # silent the direnv output
-export DIRENV_LOG_FORMAT=""
+# export DIRENV_LOG_FORMAT=""
 
 if [ -e /home/ravicorreia/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ravicorreia/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -65,7 +65,7 @@ setopt hist_find_no_dups
 
   # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
     # Keybindigns
@@ -88,3 +88,6 @@ alias home-flake-up='echo "Atualizando o flake do Home Manager" && nix flake upd
 
 alias l='ls -a'
 alias ~='cd ~'
+
+# To customize prompt, run `p10k configure` or edit ~/dotfiles/dot/.p10k.zsh.
+[[ ! -f ~/dotfiles/dot/.p10k.zsh ]] || source ~/dotfiles/dot/.p10k.zsh
