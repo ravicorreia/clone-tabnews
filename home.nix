@@ -104,8 +104,8 @@ in
     fd                  # Simple, fast and user-friendly alternative to find
     cargo               # Rust's package manager and build system, it handles dependencies e.g. nil_ls for nix.
     nodejs              # Event-driven I/O framework for the V8 JavaScript engine
+    tmux                # Terminal Multiplexer
     # ghostty             # Terminal
-    # tmux                # Terminal Multiplexer
 
     # fonts
     nerd-fonts.jetbrains-mono

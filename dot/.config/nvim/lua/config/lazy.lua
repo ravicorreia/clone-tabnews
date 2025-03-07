@@ -22,7 +22,7 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        colorscheme = "gruvbox-material",
+        colorscheme = "solarized-osaka",
       },
     },
     -- import/override with your plugins

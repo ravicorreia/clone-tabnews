@@ -1,12 +1,13 @@
 #theme = rose-pine-dawn
+#theme = rose-pine
 #theme = Kanagawa Dragon
 #theme = embers-dark
 theme = SeaShells
 font-family = "JetBrainsMono Nerd Font"
 #window-decoration = false
 background-opacity = 0.90
-window-padding-x = 6
-window-padding-y = 4
+window-padding-x = 0
+window-padding-y = 0
 #window-padding-balance = true
 window-height = 42
 window-width = 148
