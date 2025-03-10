@@ -13,6 +13,11 @@ if [ -e /home/ravicorreia/.nix-profile/etc/profile.d/nix.sh ]; then
   . /home/ravicorreia/.nix-profile/etc/profile.d/nix.sh;
 fi # added by Nix installer
 
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
+  && ~/.tmux/plugins/tpm/bin/install_plugins
+fi
+
 # Editor
 EDITOR='nvim'
 

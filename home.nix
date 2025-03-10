@@ -15,27 +15,27 @@ in
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    name = "Banana";
-    package = pkgs.banana-cursor;
-    x11 = {
-      enable = true;
-      defaultCursor = "Banana";
-    };
-  };
-  gtk = {
-    enable = true;
-    iconTheme = {
-        package = pkgs.whitesur-icon-theme;
-        name = "WhiteSur-dark";
-      };
-    cursorTheme = {
-      package = pkgs.banana-cursor;
-      name = "Banana";
-      size = 32;
-    };
-   };
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   name = "Banana";
+  #   package = pkgs.banana-cursor;
+  #   x11 = {
+  #     enable = true;
+  #     defaultCursor = "Banana";
+  #   };
+  # };
+  # gtk = {
+  #   enable = true;
+  #   iconTheme = {
+  #       package = pkgs.whitesur-icon-theme;
+  #       name = "WhiteSur-light";
+  #     };
+  #   cursorTheme = {
+  #     package = pkgs.banana-cursor;
+  #     name = "Banana";
+  #     size = 32;
+  #   };
+  #  };
 
   nix = {
     package = pkgs.nix;
@@ -76,17 +76,19 @@ in
   home.packages = with pkgs; [
 
     # basic pkgs
-    vlc
-    brave               # Browser
-    discord             # All-in-one cross-platform voice and text chat
-    vscode              # Text editor
-    spotify             # Music Stream; O dnf não possui um pacote para o spotify
+    # vlc
+    # brave               # Browser
+    # discord             # All-in-one cross-platform voice and text chat
+    # vscode              # Text editor
+    # spotify             # Music Stream; O dnf não possui um pacote para o spotify
     # stremio             # Modern media center that gives you the freedom to watch everything you want; O dnf não possui um pacote
     # obs-studio          # Free and open source software for video recording and live streaming
-    obsidian
-    timeshift           # System restore tool for Linux
+    # obsidian
+    # timeshift           # System restore tool for Linux
 
     # dev pkgs
+    zsh                 # Shell
+    tmux                # Terminal Multiplexer
     eza                 # A modern alternative for the venerable file-listing command-line program ls
     lazygit             # Simple terminal UI for git commands
     direnv              # Shell extension that manages your environment
@@ -104,11 +106,9 @@ in
     fd                  # Simple, fast and user-friendly alternative to find
     cargo               # Rust's package manager and build system, it handles dependencies e.g. nil_ls for nix.
     nodejs              # Event-driven I/O framework for the V8 JavaScript engine
-    tmux                # Terminal Multiplexer
-    # ghostty             # Terminal
 
     # fonts
-    nerd-fonts.jetbrains-mono
+    # nerd-fonts.jetbrains-mono
 
     #clang               # Compilor
     #gnumake             # Compilor

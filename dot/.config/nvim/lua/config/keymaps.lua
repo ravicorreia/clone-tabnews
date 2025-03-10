@@ -19,7 +19,7 @@ set("o", "H", "^", opts)
 set("o", "L", "$", opts)
 
 -- Toggle hotkey keybind for Floaterminal
-set("n", "<leader>wft", "<cmd>Floaterminal<CR>")
+set("n", "<leader>wft", "<cmd>Floaterminal<CR>i")
 
 -- Exit terminal
-set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+set("t", "qq", "<C-\\><C-n><cmd>Floaterminal<CR>", { desc = "Exit terminal mode" })

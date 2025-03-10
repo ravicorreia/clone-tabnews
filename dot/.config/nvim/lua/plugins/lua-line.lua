@@ -24,8 +24,9 @@ return {
       local opts = {
         options = {
           theme = "auto",
-          -- section_separators = { left = "", right = "" },
-          section_separators = { left = "▓▒░", right = "░▒▓" },
+          section_separators = { left = "", right = "" },
+          -- section_separators = { left = "▓▒░", right = "░▒▓" },
+          -- component_separators = { left = "╱", right = "╲" },
           component_separators = { left = "", right = "" },
           -- component_separators = { left = "", right = "" },
           -- section_separators = { left = "", right = "" },
@@ -33,7 +34,10 @@ return {
           disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
         },
         sections = {
-          lualine_a = { "mode" },
+          lualine_a = {
+            -- { "mode", separator = { left = "░▒▓" }, right_padding = 2 },
+            { "mode", separator = { left = "" }, right_padding = 2 },
+          },
           lualine_b = { "branch" },
 
           lualine_c = {
@@ -98,12 +102,17 @@ return {
           lualine_y = {
             -- { "progress", separator = " ", padding = { left = 1, right = 0 } },
             { "progress", padding = { left = 1, right = 1 } },
-            { "location", padding = { left = 0, right = 1 } },
+            -- { "location", padding = { left = 0, right = 1 } },
           },
           lualine_z = {
-            function()
-              return " " .. os.date("%R")
-            end,
+            {
+              function()
+                return " " .. os.date("%R")
+              end,
+              -- separator = { right = "▓▒░" },
+              separator = { right = "" },
+              left_padding = 2,
+            },
           },
         },
         extensions = { "neo-tree", "lazy", "fzf" },
