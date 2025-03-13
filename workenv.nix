@@ -1,0 +1,147 @@
+{ config, pkgs, pkgsStable, lib, ... }:
+
+let
+  link = config.lib.file.mkOutOfStoreSymlink;
+in
+{
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home = {
+    username = "ravic";
+    homeDirectory = "/home/ravic";
+  };
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
+
+  nix = {
+    package = pkgs.nix;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    # Garbage Colector
+    gc = {
+      automatic = true;
+      frequency = "monthly";
+    };
+    # extraOptions = ''
+    #   allowUnfree = true;
+    # '';
+  };
+
+  #Enable/Config programs
+  programs = {
+    git = {
+      enable = true;
+      userName = "ravic";
+      userEmail = "ravic@ciandt.com";
+      signing = {
+        key = null;
+        signByDefault = false;
+        format = "ssh";
+      };
+
+        # Outras configurações do Git aqui
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+  };
+
+  # The home.packages option allows you to install unfree Nix packages into your environment.
+  nixpkgs.config.allowUnfree = true;
+  home.packages = with pkgs; [
+
+    # dev pkgs
+    # zsh                 # Shell
+    tmux                # Terminal Multiplexer
+    eza                 # A modern alternative for the venerable file-listing command-line program ls
+    lazygit             # Simple terminal UI for git commands
+    direnv              # Shell extension that manages your environment
+    nix-direnv          # Fast, persistent use_nix implementation for direnv
+    zoxide              # Fast cd command that learns your habits
+    httpie              # Command line HTTP client whose goal is to make CLI human-friendly
+    bat                 # Cat(1) clone with syntax highlighting and Git integration
+    neovim              # Text editor
+    wl-clipboard        # Wayland clipboard functionality
+    fastfetch           # A fetch, maybe I'll also test 'nitch' something like that
+    gh                  # GitHub cli
+    fzf                 # Fuzy Finder
+    gcc                 # Compilor
+    ripgrep             # Utility that combines the usability of The Silver Searcher with the raw speed of grep
+    fd                  # Simple, fast and user-friendly alternative to find
+    cargo               # Rust's package manager and build system, it handles dependencies e.g. nil_ls for nix.
+    nodejs              # Event-driven I/O framework for the V8 JavaScript engine
+    python3             # Python 3 interpreter
+
+    # fonts
+    # nerd-fonts.jetbrains-mono
+
+    #clang               # Compilor
+    #gnumake             # Compilor
+    #binutils            # Compilor
+    #unzip               # Unzipper
+    #gnutar              # Unzipper
+
+  ] ++ (with pkgsStable; [
+    # Here i can add some packages from stable branch e.g.
+    # ghostty             # Terminal; STABLE VERSION
+  ]);
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+
+  #".zshrc".source = link ~/dotfiles/config/zshrc/.zshrc;
+  #".p10k.zsh".source = link ~/dotfiles/config/zshrc/.p10k.zsh;
+  #".config/nvim".source = link ~/dotfiles/config/nvim;
+  #".config/ghostty".source = link ~/dotfiles/config/ghostty;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+  };
+
+
+  # Home Manager can also manage your environment variables through
+  # 'home.sessionVariables'. These will be explicitly sourced when using a
+  # shell provided by Home Manager. If you don't want to manage your shell
+  # through Home Manager then you have to manually source 'hm-session-vars.sh'
+  # located at either
+  #
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  /etc/profiles/per-user/ravicorreia/etc/profile.d/hm-session-vars.sh
+  #
+  
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    SHELL = "/bin/zsh";
+    NIX_BUILD_SHELL = "/bin/zsh";
+  };
+  
+  home.activation = {
+    dotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      # Cria diretorios essenciais na VM & Usa nix-shell para fornecer o stow
+      $VERBOSE_ARG echo "Creating '.config' and 'workspace' directories..."
+      $VERBOSE_ARG echo mkdir -p $HOME/.config $HOME/workspace
+      $VERBOSE_ARG echo "Stowing dotfiles..."
+      $VERBOSE_ARG nix-shell -p stow --run "stow -d $HOME/dotfiles/dot -t $HOME ."
+    '';
+  };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+}
